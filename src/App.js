@@ -1,8 +1,10 @@
-import Users from "./components/users";
+import Nav from "./components/Nav";
+import GlobalStyle from "./components/GlobalStyle";
 function App() {
   return (
     <div className="App">
-      <Users />
+      <GlobalStyle />
+      <Nav />
     </div>
   );
 }

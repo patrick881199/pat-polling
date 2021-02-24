@@ -56,6 +56,10 @@ const GlobalStyled = createGlobalStyle`
         font-family: "Montserrat", sans-serif;
     }
 
+    li{
+        list-style-type: none;
+    }
+
 `;
 
 export default GlobalStyled;
