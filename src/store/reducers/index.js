@@ -1,6 +1,12 @@
 import { combineReducers } from "redux";
-import userReducer from "./usersReducer";
+import checkEmailReducer from "./checkEmailReducer";
+import loginReducer from "./loginReducer";
+import signupReducer from "./signupReducer";
+import checkUsernameReducer from "./checkUsernameReducer";
 
 export default combineReducers({
-  usersList: userReducer,
+  loginToken: loginReducer,
+  signupInfo: signupReducer,
+  emailAvailibilty: checkEmailReducer,
+  usernameAvailibilty: checkUsernameReducer,
 });

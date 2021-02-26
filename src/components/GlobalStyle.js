@@ -26,7 +26,7 @@ const GlobalStyled = createGlobalStyle`
 
     h2{
         font-size: 3rem;
-        font-family: 'Abril Fatface',cursive;
+        /* font-family: 'Abril Fatface',cursive; */
         font-weight: lighter;
         color:#333;
     }
@@ -60,6 +60,14 @@ const GlobalStyled = createGlobalStyle`
         list-style-type: none;
     }
 
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: none;
+        border-color: lightblue;
+    }
 `;
 
 export default GlobalStyled;
