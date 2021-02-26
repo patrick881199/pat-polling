@@ -1,0 +1,60 @@
+{
+  "content": [
+    {
+      "id": 6,
+      "question": "冲数量的投票",
+      "choices": [
+        {
+          "id": 13,
+          "text": "过得舒服吧",
+          "voteCount": 0
+        },
+        {
+          "id": 14,
+          "text": "分割线",
+          "voteCount": 0
+        }
+      ],
+      "createdBy": {
+        "id": 1,
+        "username": "admin",
+        "name": "guang shi"
+      },
+      "creationDateTime": "2021-02-24T21:39:00Z",
+      "expirationDateTime": "2021-02-25T21:39:00Z",
+      "totalVotes": 0,
+      "expired": true
+    },
+    {
+      "id": 5,
+      "question": "已经过期，已经投过的投票",
+      "choices": [
+        {
+          "id": 11,
+          "text": "热威威",
+          "voteCount": 0
+        },
+        {
+          "id": 12,
+          "text": "花粉过敏呢",
+          "voteCount": 1
+        }
+      ],
+      "createdBy": {
+        "id": 1,
+        "username": "admin",
+        "name": "guang shi"
+      },
+      "creationDateTime": "2021-02-24T21:37:39Z",
+      "expirationDateTime": "2021-02-23T21:37:39Z",
+      "selectedChoice": 12,
+      "totalVotes": 1,
+      "expired": true
+    }
+  ],
+  "page": 0,
+  "size": 2,
+  "totalElements": 5,
+  "totalPages": 3,
+  "last": false
+}

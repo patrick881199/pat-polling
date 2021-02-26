@@ -12,11 +12,11 @@ const Nav = () => {
           <Link to="/">Polling App</Link>
         </h1>
         <LinkList>
-          <NavLink to="/login" light={pathname === "/login"}>
+          <NavLink to="/login" light={pathname === "/login" ? 1 : 0}>
             Login
           </NavLink>
 
-          <NavLink to="/signup" light={pathname === "/signup"}>
+          <NavLink to="/signup" light={pathname === "/signup" ? 1 : 0}>
             Signup
           </NavLink>
         </LinkList>

@@ -29,7 +29,7 @@ const SignupForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (submitAvailable) return;
+    if (!submitAvailable) return;
 
     dispatch(
       signup({

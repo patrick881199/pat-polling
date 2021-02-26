@@ -5,3 +5,4 @@ export const USER_LOGIN = "USER_LOGIN";
 export const USER_SIGNUP = "USER_SIGNUP";
 export const CHECK_EMAIL = "CHECK_EMAIL";
 export const CHECK_USERNAME = "CHECK_USERNAME";
+export const GET_POLLS = "GET_POLLS";

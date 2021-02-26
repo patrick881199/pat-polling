@@ -1,9 +1,9 @@
 import React from "react";
-
+import Polls from "../components/Polls";
 const Home = () => {
   return (
     <div className="homepage">
-      <h1>Home</h1>
+      <Polls />
     </div>
   );
 };
