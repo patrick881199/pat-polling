@@ -12,6 +12,7 @@ import { validateEmail, validateUsername } from "../util";
 import { useHistory } from "react-router-dom";
 
 import { errorMesAnim } from "../animation";
+import Button from "./Button";
 
 const SignupForm = () => {
   const [fullname, setFullname] = useState("");
@@ -110,11 +111,7 @@ const SignupForm = () => {
           required={true}
         />
 
-        <StyledButton
-          type="submit"
-          value="Sign Up"
-          disabled={!submitAvailable ? true : false}
-        />
+        <Button value="Sign Up" disabled={!submitAvailable} />
       </form>
     </StyledForm>
   );
@@ -124,31 +121,8 @@ const StyledForm = styled.div`
   width: 30%;
   margin: 5rem auto;
 
-  label {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
   h2 {
     margin-bottom: 2rem;
-  }
-`;
-const StyledButton = styled.input`
-  border-style: solid;
-  width: 100%;
-  display: block;
-  height: 3.5rem;
-  border-radius: 1rem;
-  background-color: #1890ff;
-  border-color: #1890ff;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  :hover {
-    background-color: #44a5ff;
-  }
-  :disabled {
-    background-color: #75bcfd;
   }
 `;
 

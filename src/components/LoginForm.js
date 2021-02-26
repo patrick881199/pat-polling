@@ -9,6 +9,8 @@ import UserIcon from "../imgs/userIcon.svg";
 import PasswordIcon from "../imgs/passwordIcon.svg";
 import { useDispatch } from "react-redux";
 import { login } from "../store/actions/loginAction";
+import InputArea from "./InputArea";
+import Button from "./Button";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +28,7 @@ const LoginForm = () => {
     <StyledForm>
       <form action="#" onSubmit={formSubmitHandler}>
         <h2>Login</h2>
-        <StyledInput
+        {/* <StyledInput
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           type="text"
@@ -37,8 +39,26 @@ const LoginForm = () => {
           placeholder="Username or Email"
           required
           icon={UserIcon}
+        /> */}
+        <InputArea
+          content="username"
+          value={username}
+          type="text"
+          placeholder="Username or Email"
+          required={true}
+          onChangeHandler={setUsername}
+          icon={UserIcon}
         />
-        <StyledInput
+        <InputArea
+          content="password"
+          value={password}
+          onChangeHandler={setPassword}
+          type="password"
+          placeholder="Password"
+          required={true}
+          icon={PasswordIcon}
+        />
+        {/* <StyledInput
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
@@ -49,9 +69,9 @@ const LoginForm = () => {
           placeholder="Password"
           required
           icon={PasswordIcon}
-        />
-
-        <StyledButton type="submit" value="login" />
+        /> */}
+        <Button value="login" disabled={false} />
+        {/* <StyledButton type="submit" value="login" /> */}
       </form>
     </StyledForm>
   );
@@ -60,40 +80,9 @@ const LoginForm = () => {
 const StyledForm = styled.div`
   width: 30%;
   margin: 5rem auto;
-`;
-const StyledButton = styled.input`
-  border-style: solid;
-  width: 100%;
-  display: block;
-  height: 3.5rem;
-  border-radius: 1rem;
-  background-color: #1890ff;
-  border-color: #1890ff;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  :hover {
-    background-color: #44a5ff;
+  h2 {
+    margin-bottom: 2rem;
   }
-`;
-const StyledInput = styled.input.attrs((props) => ({
-  minLength: props.minLength,
-  maxLength: props.maxLength,
-}))`
-  display: block;
-  width: 100%;
-  margin: 2rem 0rem;
-  height: 4rem;
-  border-radius: 0.5rem;
-  border-color: lightgrey;
-  font-size: 1.8rem;
-  padding: 0.5rem;
-  border-style: solid;
-  color: #909090;
-  background: url(${(props) => props.icon}) no-repeat scroll 0.8rem 1rem;
-  background-size: 1.8rem 1.8rem;
-
-  padding-left: 3.5rem;
 `;
 
 export default LoginForm;

@@ -18,7 +18,7 @@ const InputArea = ({
 }) => {
   return (
     <div className="input">
-      <label htmlFor={content}>{label}</label>
+      <Label htmlFor={content}>{label}</Label>
       <StyledInput
         value={value}
         onChange={
@@ -46,6 +46,12 @@ const InputArea = ({
     </div>
   );
 };
+
+const Label = styled.label`
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+`;
 
 const StyledInput = styled.input`
   display: block;
