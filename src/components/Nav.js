@@ -1,22 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = () => {
+  const { pathname } = useLocation();
+
   return (
     <StyledNav>
       <NavWrapper>
         <h1>
           <Link to="/">Polling App</Link>
         </h1>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
+        <LinkList>
+          <NavLink to="/login" light={pathname === "/login"}>
+            Login
+          </NavLink>
+
+          <NavLink to="/signup" light={pathname === "/signup"}>
+            Signup
+          </NavLink>
+        </LinkList>
       </NavWrapper>
     </StyledNav>
   );
@@ -39,15 +42,26 @@ const NavWrapper = styled.div`
     color: #1890ff;
     /* flex: 5 1 20rem; */
   }
-  ul {
-    /* flex: 1 1 5rem; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    li {
-      padding: 0rem 1rem;
-      font-size: 1.5rem;
-    }
+`;
+
+const LinkList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const NavLink = styled(Link)`
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  font-size: 1.7rem;
+  border-bottom: ${(props) => (props.light ? "2px solid #1890ff" : "")};
+  color: ${(props) => (props.light ? "#1890ff" : "")};
+  :hover {
+    border-bottom: 2px solid #1890ff;
+    color: #1890ff;
   }
 `;
 
