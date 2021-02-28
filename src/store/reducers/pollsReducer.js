@@ -1,4 +1,4 @@
-import { GET_POLLS, USERS_ERROR } from "../types";
+import { GET_POLLS, GET_POLLS_ERROR } from "../types";
 
 const initialState = {
   content: [],
@@ -20,7 +20,7 @@ export default function pollsReducer(state = initialState, action) {
         totalPages: action.payload.totalPages,
         last: action.payload.last,
       };
-    case USERS_ERROR:
+    case GET_POLLS_ERROR:
       return {
         ...state,
         loading: false,

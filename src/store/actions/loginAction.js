@@ -1,4 +1,4 @@
-import { USER_LOGIN, USERS_ERROR } from "../types";
+import { USER_LOGIN, USER_LOGIN_ERROR, CLEAR_LOGING_STORE } from "../types";
 import axios from "axios";
 
 export const login = (loginCredential) => async (dispatch) => {
@@ -13,8 +13,14 @@ export const login = (loginCredential) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: USERS_ERROR,
+      type: USER_LOGIN_ERROR,
       payload: error,
     });
   }
+};
+
+export const clearLoginStore = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_LOGING_STORE,
+  });
 };

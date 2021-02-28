@@ -1,4 +1,4 @@
-import { CHECK_EMAIL, USERS_ERROR } from "../types";
+import { CHECK_EMAIL, CHECK_EMAIL_ERROR } from "../types";
 
 const initialState = {
   available: true,
@@ -10,7 +10,7 @@ const checkEmailReducer = (state = initialState, action) => {
       return {
         available: action.payload.available,
       };
-    case USERS_ERROR:
+    case CHECK_EMAIL_ERROR:
       return {
         error: action.payload,
       };

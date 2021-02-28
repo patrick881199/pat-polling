@@ -1,8 +1,10 @@
 import {
   USER_SIGNUP,
-  USERS_ERROR,
+  USER_SIGNUP_ERROR,
   CHECK_EMAIL,
   CHECK_USERNAME,
+  CHECK_EMAIL_ERROR,
+  CHECK_USERNAME_ERROR,
 } from "../types";
 import axios from "axios";
 
@@ -18,7 +20,7 @@ export const signup = (signupInfo) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: USERS_ERROR,
+      type: USER_SIGNUP_ERROR,
       payload: error,
     });
   }
@@ -37,7 +39,7 @@ export const checkEmail = (email) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: USERS_ERROR,
+      type: CHECK_EMAIL_ERROR,
       payload: error,
     });
   }
@@ -54,7 +56,7 @@ export const checkUsername = (username) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: USERS_ERROR,
+      type: CHECK_USERNAME_ERROR,
       payload: error,
     });
   }

@@ -1,10 +1,20 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChartBar } from "@fortawesome/free-regular-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { clearLoginStore } from "../store/actions/loginAction";
+import { useDispatch } from "react-redux";
 const Nav = () => {
   const { pathname } = useLocation();
+  const homeIcon = <FontAwesomeIcon icon={faHome} />;
+  const barIcon = <FontAwesomeIcon icon={faChartBar} />;
+  const userIcon = <FontAwesomeIcon icon={faUser} />;
+  const dispatch = useDispatch();
 
+  const history = useHistory();
   return (
     <StyledNav>
       <NavWrapper>
@@ -12,13 +22,38 @@ const Nav = () => {
           <Link to="/">Polling App</Link>
         </h1>
         <LinkList>
-          <NavLink to="/login" light={pathname === "/login" ? 1 : 0}>
-            Login
-          </NavLink>
+          {localStorage.getItem("accessToken").length === 0 ? (
+            <>
+              <NavLink to="/login" light={pathname === "/login" ? 1 : 0}>
+                Login
+              </NavLink>
+              <NavLink to="/signup" light={pathname === "/signup" ? 1 : 0}>
+                Signup
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/" light={pathname === "/" ? 1 : 0}>
+                {homeIcon}
+              </NavLink>
 
-          <NavLink to="/signup" light={pathname === "/signup" ? 1 : 0}>
-            Signup
-          </NavLink>
+              <NavLink
+                to="/createPoll"
+                light={pathname === "/createPoll" ? 1 : 0}
+              >
+                {barIcon}
+              </NavLink>
+              <NavLink
+                onClick={() => {
+                  localStorage.setItem("accessToken", "");
+                  dispatch(clearLoginStore());
+                  history.go(0);
+                }}
+              >
+                {userIcon}
+              </NavLink>
+            </>
+          )}
         </LinkList>
       </NavWrapper>
     </StyledNav>

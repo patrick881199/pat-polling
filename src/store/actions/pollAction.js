@@ -1,10 +1,17 @@
-import { GET_POLLS, USERS_ERROR } from "../types";
+import { GET_POLLS, GET_POLLS_ERROR } from "../types";
 import axios from "axios";
 
-export const getPolls = () => async (dispatch) => {
+export const getPolls = (page, pageSize) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:8081/api/polls?page=0&size=2`
+      `http://localhost:8081/api/polls?page=${page}&size=${pageSize}`,
+      {
+        headers: {
+          Authorization: `${localStorage.getItem(
+            "tokenType"
+          )} ${localStorage.getItem("accessToken")}`,
+        },
+      }
     );
     dispatch({
       type: GET_POLLS,
@@ -12,7 +19,7 @@ export const getPolls = () => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: USERS_ERROR,
+      type: GET_POLLS_ERROR,
       payload: error,
     });
   }

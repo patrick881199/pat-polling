@@ -4,23 +4,34 @@ import styled from "styled-components";
 import UserIcon from "../imgs/userIcon.svg";
 
 import PasswordIcon from "../imgs/passwordIcon.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/actions/loginAction";
 import InputArea from "./InputArea";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
+  const history = useHistory();
+  const loginToken = useSelector((state) => state.loginToken);
+  const { accessToken, tokenType } = loginToken;
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(login({ usernameOrEmail: username, password: password }));
-    setUsername("");
-    setPassword("");
   };
+
+  useEffect(() => {
+    if (accessToken.length > 0) {
+      history.push("/");
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("tokenType", tokenType);
+    }
+  }, [accessToken]);
 
   return (
     <StyledForm>
