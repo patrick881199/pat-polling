@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CreatePoll from "./components/CreatePollForm";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,9 @@ function App() {
       </Route>
       <Route path="/signup" exact>
         <Signup />
+      </Route>
+      <Route path="/createPoll" exact>
+        <CreatePoll />
       </Route>
     </div>
   );

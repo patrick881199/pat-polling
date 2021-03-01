@@ -37,11 +37,11 @@ const Polls = () => {
         <Button onClick={loadMoreHandler}>+ Load More</Button>
       )}
 
-      <p>第{page + 1}页</p>
+      {/* <p>第{page + 1}页</p>
       <p>每页{size}条</p>
       <p>总共{totalElements}条</p>
       <p>总共{totalPages}页</p>
-      <p>{last ? "最后一页" : "不是最后一页"}</p>
+      <p>{last ? "最后一页" : "不是最后一页"}</p> */}
     </PollList>
   );
 };

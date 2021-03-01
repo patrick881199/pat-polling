@@ -64,7 +64,10 @@ const Poll = ({ t }) => {
     e.preventDefault();
     dispatch(clearPreviousVoteResult());
 
-    if (localStorage.getItem("accessToken").length === 0) {
+    if (
+      localStorage.getItem("accessToken") === null ||
+      localStorage.getItem("accessToken").length === 0
+    ) {
       history.push("/login");
     } else {
       dispatch(vote(poll.id, selectedOption));

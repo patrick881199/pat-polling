@@ -22,7 +22,8 @@ const Nav = () => {
           <Link to="/">Polling App</Link>
         </h1>
         <LinkList>
-          {localStorage.getItem("accessToken").length === 0 ? (
+          {localStorage.getItem("accessToken") === null ||
+          localStorage.getItem("accessToken").length === 0 ? (
             <>
               <NavLink to="/login" light={pathname === "/login" ? 1 : 0}>
                 Login
@@ -59,7 +60,6 @@ const Nav = () => {
     </StyledNav>
   );
 };
-
 const StyledNav = styled.div`
   width: 100%;
 

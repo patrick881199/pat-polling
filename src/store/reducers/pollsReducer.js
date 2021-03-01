@@ -20,6 +20,7 @@ export default function pollsReducer(state = initialState, action) {
         totalPages: action.payload.totalPages,
         last: action.payload.last,
       };
+
     case GET_POLLS_ERROR:
       return {
         ...state,
