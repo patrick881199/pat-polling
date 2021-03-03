@@ -7,13 +7,11 @@ import {
   CHECK_USERNAME_ERROR,
 } from "../types";
 import axios from "axios";
+import { base_url } from "../../api";
 
 export const signup = (signupInfo) => async (dispatch) => {
   try {
-    const res = await axios.post(
-      `http://localhost:8081/api/auth/signup`,
-      signupInfo
-    );
+    const res = await axios.post(`${base_url}/api/auth/signup`, signupInfo);
     dispatch({
       type: USER_SIGNUP,
       payload: res.data,
@@ -31,7 +29,7 @@ export const signup = (signupInfo) => async (dispatch) => {
 export const checkEmail = (email) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:8081/api/user/checkEmailAvailability?email=${email}`
+      `${base_url}/api/user/checkEmailAvailability?email=${email}`
     );
     dispatch({
       type: CHECK_EMAIL,
@@ -48,7 +46,7 @@ export const checkEmail = (email) => async (dispatch) => {
 export const checkUsername = (username) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:8081/api/user/checkUsernameAvailability?username=${username}`
+      `${base_url}/api/user/checkUsernameAvailability?username=${username}`
     );
     dispatch({
       type: CHECK_USERNAME,

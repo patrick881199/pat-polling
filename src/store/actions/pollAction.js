@@ -6,11 +6,12 @@ import {
   CLEAR_CREATION_MESSAGE,
 } from "../types";
 import axios from "axios";
+import { base_url } from "../../api";
 
 export const getPolls = (page, pageSize) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:8081/api/polls?page=${page}&size=${pageSize}`,
+      `${base_url}/api/polls?page=${page}&size=${pageSize}`,
       {
         headers: {
           Authorization: `${localStorage.getItem(
@@ -33,7 +34,7 @@ export const getPolls = (page, pageSize) => async (dispatch) => {
 
 export const createPolls = (payload) => async (dispatch) => {
   try {
-    const res = await axios.post(`http://localhost:8081/api/polls`, payload, {
+    const res = await axios.post(`${base_url}/api/polls`, payload, {
       headers: {
         Authorization: `${localStorage.getItem(
           "tokenType"
@@ -60,7 +61,7 @@ export const clearCreationMessage = () => (dispatch) => {
 
 // export const createPolls = (payload) => async (dispatch) => {
 //   try {
-//     const res = await axios.post(`http://localhost:8081/api/polls`, payload, {
+//     const res = await axios.post(`${base_url}/api/polls`, payload, {
 //       headers: {
 //         Authorization: `${localStorage.getItem(
 //           "tokenType"

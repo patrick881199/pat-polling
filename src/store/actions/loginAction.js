@@ -7,10 +7,11 @@ import {
 } from "../types";
 import axios from "axios";
 
+import { base_url } from "../../api";
 export const login = (loginCredential) => async (dispatch) => {
   try {
     const res = await axios.post(
-      `http://localhost:8081/api/auth/signin`,
+      `${base_url}/api/auth/signin`,
       loginCredential
     );
     dispatch({
@@ -33,7 +34,7 @@ export const clearLoginStore = () => (dispatch) => {
 
 export const getMe = () => async (dispatch) => {
   try {
-    const res = await axios.get(`http://localhost:8081/api/user/me`, {
+    const res = await axios.get(`${base_url}/api/user/me`, {
       headers: {
         Authorization: `${localStorage.getItem(
           "tokenType"

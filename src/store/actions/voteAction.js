@@ -1,10 +1,10 @@
 import { USER_VOTE, USER_VOTE_ERROR, CLEAR_PREV_VOTE_RESULT } from "../types";
 import axios from "axios";
-
+import { base_url } from "../../api";
 export const vote = (pollId, selectedOption) => async (dispatch) => {
   try {
     const res = await axios.post(
-      `http://localhost:8081/api/polls/${pollId}/votes`,
+      `${base_url}/api/polls/${pollId}/votes`,
       { choiceId: selectedOption },
       {
         headers: {

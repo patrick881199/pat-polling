@@ -1,5 +1,6 @@
 import { GET_USERS, GET_USERS_ERROR } from "../types";
 import axios from "axios";
+import { base_url } from "../../api";
 
 export const getUsers = () => async (dispatch) => {
   try {
