@@ -25,7 +25,6 @@ export const vote = (pollId, selectedOption) => async (dispatch) => {
     });
   }
 };
-
 export const clearPreviousVoteResult = () => (dispatch) => {
   dispatch({
     type: CLEAR_PREV_VOTE_RESULT,
