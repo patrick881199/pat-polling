@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartBar } from "@fortawesome/free-regular-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { clearLoginStore } from "../store/actions/loginAction";
 import { useDispatch } from "react-redux";
 const Nav = () => {
   const { pathname } = useLocation();
   const homeIcon = <FontAwesomeIcon icon={faHome} />;
   const barIcon = <FontAwesomeIcon icon={faChartBar} />;
-  const userIcon = <FontAwesomeIcon icon={faUser} />;
+  const doorIcon = <FontAwesomeIcon icon={faDoorOpen} />;
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -45,14 +45,21 @@ const Nav = () => {
                 {barIcon}
               </NavLink>
               <NavLink
+                to="#"
                 onClick={() => {
                   localStorage.setItem("accessToken", "");
                   dispatch(clearLoginStore());
                   history.go(0);
                 }}
               >
-                {userIcon}
+                {doorIcon}
               </NavLink>
+              {/* <DropMenu>
+                <UserInfo>
+                  <h3>fullname</h3>
+                  <p>@username</p>
+                </UserInfo>
+              </DropMenu> */}
             </>
           )}
         </LinkList>
@@ -62,7 +69,7 @@ const Nav = () => {
 };
 const StyledNav = styled.div`
   width: 100%;
-
+  position: relative;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
 `;
 
@@ -85,6 +92,8 @@ const LinkList = styled.div`
   justify-content: space-between;
 `;
 
+const UserInfo = styled.div``;
+
 const NavLink = styled(Link)`
   height: 10vh;
   display: flex;
@@ -99,5 +108,12 @@ const NavLink = styled(Link)`
     color: #1890ff;
   }
 `;
-
+const DropMenu = styled.div`
+  width: 16rem;
+  height: 16rem;
+  position: absolute;
+  right: 5rem;
+  top: 6rem;
+  border: 1px solid lightgray;
+`;
 export default Nav;

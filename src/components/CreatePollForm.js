@@ -27,6 +27,7 @@ const CreatePoll = () => {
       history.push("/");
     }
     dispatch(clearCreationMessage());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [success]);
 
   const formSubmitHandler = (e) => {
@@ -78,24 +79,23 @@ const CreatePoll = () => {
   const choiceListHtml = (
     <>
       {choiceNumbers.map((choiceNumber, index) => (
-        <>
-          <ChoiceGroup>
-            <Choice
-              value={choices[index].text}
-              onChange={(e) => choiceValueChangeHandler(e, choiceNumber)}
-              id={`choice${choiceNumber + 1}`}
-              name={`choice${choiceNumber + 1}`}
-              type="text"
-              placeholder={`Choice ${choiceNumber + 1}`}
-              required={true}
-            />
-            {choiceNumber > 1 && (
-              <Icon onClick={() => deleteHandler(choiceNumber)}>
-                {deleteIcon}
-              </Icon>
-            )}
-          </ChoiceGroup>
-        </>
+        <ChoiceGroup key={index}>
+          <Choice
+            key={index}
+            value={choices[index].text}
+            onChange={(e) => choiceValueChangeHandler(e, choiceNumber)}
+            id={`choice${choiceNumber + 1}`}
+            name={`choice${choiceNumber + 1}`}
+            type="text"
+            placeholder={`Choice ${choiceNumber + 1}`}
+            required={true}
+          />
+          {choiceNumber > 1 && (
+            <Icon key={index} onClick={() => deleteHandler(choiceNumber)}>
+              {deleteIcon}
+            </Icon>
+          )}
+        </ChoiceGroup>
       ))}
     </>
   );
@@ -113,7 +113,9 @@ const CreatePoll = () => {
       onChange={(e) => pollLengthChangeHandler(e)}
     >
       {days.map((day) => (
-        <option value={day}>{day}</option>
+        <option key={day} value={day}>
+          {day}
+        </option>
       ))}
     </select>
   );
@@ -126,7 +128,9 @@ const CreatePoll = () => {
       onChange={(e) => pollLengthChangeHandler(e)}
     >
       {hours.map((hour) => (
-        <option value={hour}>{hour}</option>
+        <option key={hour} value={hour}>
+          {hour}
+        </option>
       ))}
     </select>
   );

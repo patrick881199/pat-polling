@@ -7,15 +7,12 @@ import styled from "styled-components";
 const Polls = () => {
   const dispatch = useDispatch();
   const pollList = useSelector((state) => state.polls);
-  const { content, page, size, totalElements, totalPages, last } = pollList;
-
-  const loginToken = useSelector((state) => state.loginToken);
-  const { tokenType, accessToken } = loginToken;
+  const { content, page, totalPages } = pollList;
 
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    setList([...list, ...content]);
+    setList((list) => [...list, ...content]);
   }, [content]);
 
   useEffect(() => {

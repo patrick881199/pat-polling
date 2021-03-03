@@ -31,6 +31,7 @@ const LoginForm = () => {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("tokenType", tokenType);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken]);
 
   return (

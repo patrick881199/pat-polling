@@ -6,6 +6,7 @@ import checkUsernameReducer from "./checkUsernameReducer";
 import pollsReducer from "./pollsReducer";
 import voteReducer from "./voteReducer";
 import createPollsReducer from "./createPollsReducer";
+import meReducer from "./meReducer";
 
 export default combineReducers({
   loginToken: loginReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   polls: pollsReducer,
   voteResult: voteReducer,
   createPollsResults: createPollsReducer,
+  myInfo: meReducer,
 });

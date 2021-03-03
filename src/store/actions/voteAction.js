@@ -1,6 +1,5 @@
 import { USER_VOTE, USER_VOTE_ERROR, CLEAR_PREV_VOTE_RESULT } from "../types";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 export const vote = (pollId, selectedOption) => async (dispatch) => {
   try {

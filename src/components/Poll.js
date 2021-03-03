@@ -22,8 +22,8 @@ const Poll = ({ t }) => {
   let mostVoteCount = 0;
 
   poll.choices.map((choice) => {
-    mostVoteCount =
-      choice.voteCount > mostVoteCount ? choice.voteCount : mostVoteCount;
+    return (mostVoteCount =
+      choice.voteCount > mostVoteCount ? choice.voteCount : mostVoteCount);
   });
 
   const voteResult = useSelector((state) => state.voteResult);
@@ -34,11 +34,7 @@ const Poll = ({ t }) => {
       (choice.voteCount / poll.totalVotes) * 100
     )}% `;
     return (
-      <Choice
-        key={choice.id}
-        grey={poll.selectedChoice === choice.id}
-        blue={!active && choice.voteCount === mostVoteCount}
-      >
+      <Choice key={choice.id}>
         {!selected && active && (
           <input
             type="radio"
@@ -50,10 +46,15 @@ const Poll = ({ t }) => {
           />
         )}
         <label htmlFor={choice.id}>
-          {selected && percentage}
+          {(selected || !active) && percentage}
           {choice.text + "   "}
           {poll.selectedChoice === choice.id && checkedIcon}
         </label>
+        <ColorLayer
+          grey={selected}
+          blue={!active && choice.voteCount === mostVoteCount}
+          percentage={percentage}
+        ></ColorLayer>
       </Choice>
     );
   });
@@ -79,6 +80,7 @@ const Poll = ({ t }) => {
         setPoll(pollResult);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pollResult]);
 
   const createDateTime = convertUTCDateToLocalDate(poll.creationDateTime);
@@ -173,6 +175,7 @@ const Form = styled.form`
 `;
 
 const Choice = styled.div`
+  position: relative;
   margin: 1.8rem 0rem;
   display: flex;
   font-size: 1.4rem;
@@ -190,6 +193,17 @@ const Choice = styled.div`
     width: 100%;
     cursor: pointer;
   }
+`;
+
+const ColorLayer = styled.div`
+  width: ${(props) => props.percentage};
+  height: 100%;
+  z-index: -10;
+  background-color: ${(props) => (props.grey ? "#dfdfdf" : "")};
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${(props) => (props.blue ? "#40a9ff" : "")};
 `;
 
 const VoteLine = styled.div`
