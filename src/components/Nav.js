@@ -92,8 +92,6 @@ const LinkList = styled.div`
   justify-content: space-between;
 `;
 
-const UserInfo = styled.div``;
-
 const NavLink = styled(Link)`
   height: 10vh;
   display: flex;
@@ -108,12 +106,12 @@ const NavLink = styled(Link)`
     color: #1890ff;
   }
 `;
-const DropMenu = styled.div`
-  width: 16rem;
-  height: 16rem;
-  position: absolute;
-  right: 5rem;
-  top: 6rem;
-  border: 1px solid lightgray;
-`;
+// const DropMenu = styled.div`
+//   width: 16rem;
+//   height: 16rem;
+//   position: absolute;
+//   right: 5rem;
+//   top: 6rem;
+//   border: 1px solid lightgray;
+// `;
 export default Nav;
